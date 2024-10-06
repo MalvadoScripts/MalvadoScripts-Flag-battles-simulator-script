@@ -1,0 +1,65 @@
+local player = game.Players.LocalPlayer
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "malvado_scripts", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+    Name = "Tab 1",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+    Name = "LocalPlayer"
+})
+
+OrionLib:MakeNotification({
+    Name = "Welcome!",
+    Content = "Welcome to my hub!",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+local toggleButton = Section:AddToggle({
+    Name = "🎁 Gift Spammer",
+    Callback = function(isActive)
+        if isActive then
+            giftSpammerActive = true
+            while giftSpammerActive do
+                game:GetService("ReplicatedStorage").Framework.Remotes.Gifts:FireServer(1)
+                wait()
+            end
+        else
+            giftSpammerActive = false
+        end
+    end
+})
+
+local toggleButton2 = Section:AddToggle({
+    Name = "🎁 Gift Spammer 2",
+    Callback = function(isActive)
+        if isActive then
+            giftSpammer2Active = true
+            while giftSpammer2Active do
+                game:GetService("ReplicatedStorage").Framework.Remotes.Gifts:FireServer(2)
+                wait()
+            end
+        else
+            giftSpammer2Active = false
+        end
+    end
+})
+
+local toggleButton3 = Section:AddToggle({
+    Name = "🔄 Rebirth Spammer",
+    Callback = function(isActive)
+        if isActive then
+            rebirthSpammerActive = true
+            while rebirthSpammerActive do
+                game:GetService("ReplicatedStorage").Framework.Remotes.Rebirth:FireServer()
+                wait()
+            end
+        else
+            rebirthSpammerActive = false
+        end
+    end
+})
