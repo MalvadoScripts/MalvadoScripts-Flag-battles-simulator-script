@@ -63,3 +63,14 @@ local toggleButton3 = Section:AddToggle({
         end
     end
 })
+
+local creditsButton = Section:AddButton({
+    Name = "📽️ Credits",
+    Callback = function()
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Credits",
+            Text = "Credits: YouTube malvado_scripts",
+            Duration = 5
+        })
+    end
+})
